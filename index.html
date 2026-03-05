@@ -11,13 +11,11 @@
     :root {
       --teal: #83B3A9;
       --gold: #c8a84b;
-      --blue-link: #4ab3d4;
       --dark-bg: #0f1319;
       --card-bg: #161c26;
       --border: #2a3244;
       --text-muted: #808080;
       --text-dim: #a0a8b0;
-      --divider: #3a4250;
     }
 
     body {
@@ -28,10 +26,9 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 48px 20px 80px;
+      padding: 0 0 80px;
     }
 
-    /* Subtle background texture */
     body::before {
       content: '';
       position: fixed;
@@ -43,29 +40,89 @@
       z-index: 0;
     }
 
+    /* ── SAFARI BANNER ── */
+    .safari-banner {
+      width: 100%;
+      background: linear-gradient(135deg, #1a2535 0%, #1e2d3d 100%);
+      border-bottom: 2px solid var(--gold);
+      padding: 16px 24px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .safari-banner-icon {
+      font-size: 28px;
+      line-height: 1;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .safari-banner-text {
+      flex: 1;
+    }
+
+    .safari-banner-text strong {
+      display: block;
+      font-size: 13px;
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 5px;
+    }
+
+    .safari-banner-text p {
+      font-size: 13px;
+      color: #c0cad8;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .safari-banner-text .step {
+      display: inline-block;
+      background: rgba(200,168,75,0.15);
+      border: 1px solid rgba(200,168,75,0.3);
+      border-radius: 3px;
+      padding: 1px 7px;
+      font-size: 12px;
+      color: var(--gold);
+      font-weight: 700;
+      margin: 0 2px;
+    }
+
+    .banner-dismiss {
+      background: transparent;
+      border: none;
+      color: var(--text-dim);
+      font-size: 20px;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      flex-shrink: 0;
+      align-self: flex-start;
+    }
+
+    /* ── MAIN CONTENT ── */
     .container {
       position: relative;
       z-index: 1;
       width: 100%;
-      max-width: 720px;
+      max-width: 680px;
+      padding: 40px 20px 0;
     }
 
-    /* Header */
     .header {
       text-align: center;
-      margin-bottom: 48px;
-      animation: fadeUp 0.6s ease both;
+      margin-bottom: 36px;
     }
 
-    .header-logo {
-      display: block;
-      margin: 0 auto 20px;
-      opacity: 0.9;
-    }
+    .header img { display: block; margin: 0 auto 18px; opacity: 0.9; }
 
     .header h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 32px;
+      font-size: 30px;
       font-weight: 600;
       color: var(--teal);
       letter-spacing: 0.04em;
@@ -73,43 +130,33 @@
     }
 
     .header p {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--text-dim);
       letter-spacing: 0.08em;
       text-transform: uppercase;
     }
 
-    /* Form Card */
     .card {
       background: var(--card-bg);
       border: 1px solid var(--border);
       border-radius: 4px;
-      padding: 36px 40px;
-      margin-bottom: 32px;
-      animation: fadeUp 0.6s 0.1s ease both;
+      padding: 32px 36px;
+      margin-bottom: 28px;
     }
 
     .card-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 18px;
+      font-size: 17px;
       font-weight: 600;
       color: var(--teal);
-      margin-bottom: 24px;
-      letter-spacing: 0.05em;
+      margin-bottom: 22px;
       padding-bottom: 12px;
       border-bottom: 1px solid var(--border);
+      letter-spacing: 0.04em;
     }
 
-    .field-group {
-      display: grid;
-      gap: 20px;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-    }
+    .field-group { display: grid; gap: 18px; }
+    .field { display: flex; flex-direction: column; gap: 6px; }
 
     label {
       font-size: 11px;
@@ -119,16 +166,17 @@
       font-weight: 700;
     }
 
-    input {
+    input[type="text"], input[type="tel"] {
       background: #0f1319;
       border: 1px solid var(--border);
       border-radius: 3px;
-      padding: 11px 14px;
-      font-size: 14px;
+      padding: 12px 14px;
+      font-size: 16px;
       font-family: 'Lato', sans-serif;
       color: #e0e6ef;
-      transition: border-color 0.2s, box-shadow 0.2s;
       outline: none;
+      width: 100%;
+      -webkit-appearance: none;
     }
 
     input:focus {
@@ -136,14 +184,12 @@
       box-shadow: 0 0 0 3px rgba(131,179,169,0.1);
     }
 
-    input::placeholder {
-      color: #3a4250;
-    }
+    input::placeholder { color: #3a4250; }
 
     .btn-generate {
-      margin-top: 28px;
+      margin-top: 24px;
       width: 100%;
-      padding: 14px;
+      padding: 15px;
       background: var(--teal);
       color: #0f1319;
       font-family: 'Lato', sans-serif;
@@ -154,454 +200,356 @@
       border: none;
       border-radius: 3px;
       cursor: pointer;
-      transition: background 0.2s, transform 0.1s;
+      -webkit-appearance: none;
     }
 
-    .btn-generate:hover { background: #9dccc2; }
-    .btn-generate:active { transform: scale(0.99); }
+    .btn-generate:active { opacity: 0.85; }
 
-    /* Output Section */
-    .output-section {
-      display: none;
-      animation: fadeUp 0.5s ease both;
-    }
+    /* ── OUTPUT ── */
+    .sig-section { display: none; }
+    .sig-section.visible { display: block; }
 
-    .output-section.visible { display: block; }
-
-    .output-tabs {
+    .sig-tabs {
       display: flex;
-      gap: 0;
-      margin-bottom: 0;
-      border-bottom: 1px solid var(--border);
+      gap: 8px;
+      margin-bottom: 12px;
     }
 
-    .tab-btn {
-      padding: 12px 22px;
+    .sig-tab {
+      padding: 8px 18px;
       background: transparent;
-      border: none;
+      border: 1px solid var(--border);
+      border-radius: 3px;
       font-family: 'Lato', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--text-dim);
       cursor: pointer;
-      border-bottom: 2px solid transparent;
-      margin-bottom: -1px;
-      transition: color 0.2s, border-color 0.2s;
+      -webkit-appearance: none;
     }
 
-    .tab-btn.active {
+    .sig-tab.active {
+      background: var(--teal);
+      border-color: var(--teal);
+      color: #0f1319;
+    }
+
+    .sig-pane { display: none; }
+    .sig-pane.active { display: block; }
+
+    .sig-instructions {
+      background: rgba(131,179,169,0.08);
+      border: 1px solid rgba(131,179,169,0.2);
+      border-radius: 4px 4px 0 0;
+      padding: 14px 18px;
+      font-size: 13px;
       color: var(--teal);
-      border-bottom-color: var(--teal);
+      line-height: 1.7;
     }
 
-    .tab-pane { display: none; }
-    .tab-pane.active { display: block; }
+    .sig-instructions strong {
+      display: block;
+      margin-bottom: 6px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
 
-    .output-card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
+    .sig-instructions ol {
+      padding-left: 18px;
+      margin: 0;
+    }
+
+    .sig-box {
+      background: #ffffff;
+      border: 1px solid #ddd;
       border-top: none;
+      padding: 24px 20px;
+      overflow-x: auto;
+      -webkit-user-select: text;
+      user-select: text;
+      cursor: text;
+      outline: none;
       border-radius: 0 0 4px 4px;
-      overflow: hidden;
     }
 
-    /* Instructions banner */
-    .instructions {
-      background: rgba(131,179,169,0.07);
-      border-bottom: 1px solid var(--border);
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .instructions-text {
+    .reply-note {
+      margin-bottom: 10px;
       font-size: 12px;
-      color: var(--teal);
+      color: var(--text-muted);
+      font-style: italic;
       line-height: 1.5;
     }
 
-    .instructions-text strong {
-      display: block;
-      margin-bottom: 1px;
-    }
-
-    /* Signature preview frame */
-    .sig-frame {
-      background: #ffffff;
-      padding: 28px 24px;
-      overflow-x: auto;
-      -webkit-user-select: all;
-      user-select: all;
-      outline: none;
-      cursor: text;
-    }
-
-    .sig-frame:focus {
-      box-shadow: inset 0 0 0 2px rgba(131,179,169,0.4);
-    }
-
-    /* iOS tap-to-select pulse hint */
-    .ios-hint {
-      display: none;
-      padding: 10px 20px;
-      background: rgba(200,168,75,0.08);
-      border-bottom: 1px solid var(--border);
-      font-size: 12px;
-      color: var(--gold);
-      text-align: center;
-    }
-
-    /* Copy button */
-    .copy-bar {
-      padding: 14px 20px;
-      border-top: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .copy-hint {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-style: italic;
-    }
-
-    .btn-copy {
-      padding: 9px 22px;
+    .btn-reset {
+      margin-top: 20px;
       background: transparent;
-      border: 1px solid var(--teal);
-      color: var(--teal);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
       font-family: 'Lato', sans-serif;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
+      padding: 10px 20px;
       border-radius: 3px;
       cursor: pointer;
-      transition: background 0.2s, color 0.2s;
-      white-space: nowrap;
+      width: 100%;
+      -webkit-appearance: none;
     }
 
-    .btn-copy:hover {
-      background: var(--teal);
-      color: #0f1319;
-    }
-
-    .btn-copy.copied {
-      background: var(--gold);
-      border-color: var(--gold);
-      color: #0f1319;
-    }
-
-    /* Reply sig note */
-    .reply-note {
-      padding: 16px 20px;
-      font-size: 12px;
-      color: var(--text-muted);
-      font-style: italic;
-      border-bottom: 1px solid var(--border);
-      line-height: 1.6;
-    }
-
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    @media (max-width: 520px) {
-      .card { padding: 24px 20px; }
-      .header h1 { font-size: 26px; }
+    @media (max-width: 480px) {
+      .card { padding: 24px 18px; }
+      .header h1 { font-size: 24px; }
+      .safari-banner { padding: 14px 16px; }
     }
   </style>
 </head>
 <body>
 
-<div class="container">
-
-  <!-- Header -->
-  <div class="header">
-    <img class="header-logo"
-      src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png"
-      alt="Madan+" width="120" />
-    <h1>Signature Generator</h1>
-    <p>iOS Outlook · Internal Tool</p>
+  <!-- ── SAFARI REMINDER BANNER ── -->
+  <div class="safari-banner" id="safari-banner">
+    <div class="safari-banner-icon">🧭</div>
+    <div class="safari-banner-text">
+      <strong>Must be opened in Safari to work</strong>
+      <p>
+        In Outlook, tap the <span class="step">⋯</span> or <span class="step">Share</span> button on this attachment
+        → tap <span class="step">Open in Safari</span> — then follow the steps below.
+      </p>
+    </div>
+    <button class="banner-dismiss" onclick="document.getElementById('safari-banner').style.display='none'" aria-label="Dismiss">✕</button>
   </div>
 
-  <!-- Form -->
-  <div class="card">
-    <div class="card-title">Your Details</div>
-    <div class="field-group">
-      <div class="field">
-        <label for="f-name">Full Name</label>
-        <input id="f-name" type="text" placeholder="e.g. Rumman Khan" autocomplete="off" />
-      </div>
-      <div class="field">
-        <label for="f-title">Job Title</label>
-        <input id="f-title" type="text" placeholder="e.g. Executive Assistant" autocomplete="off" />
-      </div>
-      <div class="field">
-        <label for="f-phone">Phone Number</label>
-        <input id="f-phone" type="tel" placeholder="e.g. 347.437.5542" autocomplete="off" />
-      </div>
-    </div>
-    <button class="btn-generate" onclick="generateSignature()">Generate My Signature</button>
-  </div>
+  <div class="container">
 
-  <!-- Output -->
-  <div class="output-section" id="output">
-
-    <div class="output-tabs">
-      <button class="tab-btn active" onclick="switchTab('full', this)">Full Signature</button>
-      <button class="tab-btn" onclick="switchTab('reply', this)">Reply Signature</button>
+    <div class="header">
+      <img src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png"
+        alt="Madan+" width="110" />
+      <h1>Signature Generator</h1>
+      <p>iOS Outlook · Internal Tool</p>
     </div>
 
-    <div class="output-card">
-
-      <!-- FULL SIG TAB -->
-      <div class="tab-pane active" id="tab-full">
-        <div class="instructions" id="instructions-full">
-          <div class="instructions-text">
-            <strong id="instructions-full-title">How to install on iOS Outlook:</strong>
-            <span id="instructions-full-body">Tap "Select &amp; Copy" below → long-press the signature box → Select All → Copy → Open Outlook → Settings → Signature → Paste</span>
+    <!-- FORM -->
+    <div class="card" id="form-card">
+      <div class="card-title">Your Details</div>
+      <form method="GET" action="">
+        <div class="field-group">
+          <div class="field">
+            <label for="f-name">Full Name</label>
+            <input id="f-name" name="name" type="text" placeholder="e.g. Rumman Khan"
+              autocomplete="off" autocorrect="off" autocapitalize="words" />
+          </div>
+          <div class="field">
+            <label for="f-title">Job Title</label>
+            <input id="f-title" name="title" type="text" placeholder="e.g. Executive Assistant"
+              autocomplete="off" autocorrect="off" />
+          </div>
+          <div class="field">
+            <label for="f-phone">Phone Number (Voice Only)</label>
+            <input id="f-phone" name="phone" type="tel" placeholder="e.g. 3474375542"
+              autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="f-relay">Global Relay Number (Text Only)</label>
+            <input id="f-relay" name="relay" type="tel" placeholder="e.g. 3479564451"
+              autocomplete="off" />
           </div>
         </div>
-        <div class="ios-hint" id="ios-hint-full">👆 Tap inside the white box below, then tap <strong>Select All → Copy</strong></div>
-        <div class="sig-frame" id="preview-full" contenteditable="true" spellcheck="false" tabindex="0"></div>
-        <div class="copy-bar">
-          <span class="copy-hint" id="copy-hint-full">Tap the box above → Select All → Copy → Paste into Outlook</span>
-          <button class="btn-copy" id="copy-full-btn" onclick="copySignature('full')">Select &amp; Copy</button>
-        </div>
+        <button type="submit" class="btn-generate">Generate My Signature →</button>
+      </form>
+    </div>
+
+    <!-- OUTPUT -->
+    <div class="sig-section" id="sig-section">
+
+      <div class="sig-tabs">
+        <button class="sig-tab active" onclick="showPane('full', this)">Full Signature</button>
+        <button class="sig-tab" onclick="showPane('reply', this)">Reply / Compact</button>
       </div>
 
-      <!-- REPLY SIG TAB -->
-      <div class="tab-pane" id="tab-reply">
-        <div class="reply-note">
-          💡 <strong>Note:</strong> iOS Outlook uses one signature for both new emails and replies. This compact version is designed to feel less intrusive on reply chains. Paste it the same way — or use the full signature for both.
+      <!-- FULL -->
+      <div class="sig-pane active" id="pane-full">
+        <div class="sig-instructions">
+          <strong>📋 How to install on iOS Outlook</strong>
+          <ol>
+            <li>Long-press anywhere inside the white box below</li>
+            <li>Tap <strong>Select All</strong>, then tap <strong>Copy</strong></li>
+            <li>Open Outlook → tap your profile icon (top-left) → Settings → Signature</li>
+            <li>Tap into the signature field and <strong>Paste</strong></li>
+          </ol>
         </div>
-        <div class="ios-hint" id="ios-hint-reply">👆 Tap inside the white box below, then tap <strong>Select All → Copy</strong></div>
-        <div class="sig-frame" id="preview-reply" contenteditable="true" spellcheck="false" tabindex="0"></div>
-        <div class="copy-bar">
-          <span class="copy-hint">Tap the box above → Select All → Copy → Paste into Outlook</span>
-          <button class="btn-copy" id="copy-reply-btn" onclick="copySignature('reply')">Select &amp; Copy</button>
-        </div>
+        <div class="sig-box" id="sig-full" contenteditable="true" spellcheck="false"></div>
       </div>
+
+      <!-- REPLY -->
+      <div class="sig-pane" id="pane-reply">
+        <p class="reply-note">💡 Compact version — less intrusive on reply chains. Same install steps apply.</p>
+        <div class="sig-instructions">
+          <strong>📋 How to install on iOS Outlook</strong>
+          <ol>
+            <li>Long-press anywhere inside the white box below</li>
+            <li>Tap <strong>Select All</strong>, then tap <strong>Copy</strong></li>
+            <li>Open Outlook → tap your profile icon (top-left) → Settings → Signature</li>
+            <li>Tap into the signature field and <strong>Paste</strong></li>
+          </ol>
+        </div>
+        <div class="sig-box" id="sig-reply" contenteditable="true" spellcheck="false"></div>
+      </div>
+
+      <button class="btn-reset" onclick="window.location.href=window.location.pathname">← Edit Details</button>
 
     </div>
+
   </div>
 
-</div>
-
-<script>
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
-
-  // Show iOS-specific hints if on iOS
-  if (isIOS) {
-    document.querySelectorAll('.ios-hint').forEach(el => el.style.display = 'block');
-  }
-
-  function formatPhone(raw) {
-    const digits = raw.replace(/\D/g, '');
-    if (digits.length === 10) {
-      return digits.slice(0,3) + '.' + digits.slice(3,6) + '.' + digits.slice(6);
+  <script>
+    // Hide Safari banner if already in Safari or desktop
+    const ua = navigator.userAgent;
+    const isInSafari = /^((?!chrome|android).)*safari/i.test(ua) || !ua.includes('Mobile');
+    if (isInSafari) {
+      const banner = document.getElementById('safari-banner');
+      if (banner) banner.style.display = 'none';
     }
-    return raw;
-  }
 
-  function telLink(raw) {
-    return raw.replace(/\D/g, '');
-  }
+    function getParams() {
+      const p = new URLSearchParams(window.location.search);
+      return {
+        name:  decodeURIComponent((p.get('name')  || '').replace(/\+/g,' ')),
+        title: decodeURIComponent((p.get('title') || '').replace(/\+/g,' ')),
+        phone: decodeURIComponent((p.get('phone') || '').replace(/\+/g,' ')),
+        relay: decodeURIComponent((p.get('relay') || '').replace(/\+/g,' '))
+      };
+    }
 
-  function buildFullSig(name, title, phone) {
-    const phoneFormatted = formatPhone(phone);
-    const phoneTel = telLink(phone);
-    return `<table cellpadding="0" cellspacing="0" border="0" style="font-family: Georgia, 'Times New Roman', serif;">
-  <tr>
-    <td style="vertical-align:top; padding-right:18px; width:1%;">
-      <a href="http://www.madanplus.com" target="_blank" style="display:block;">
-        <img src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png"
-          alt="Madan+ Logo" width="110"
-          style="display:block; border:0; outline:none;" />
-      </a>
-    </td>
-    <td style="vertical-align:top;">
-      <p style="margin:0 0 2px 0; font-size:15px; font-weight:bold; color:#83B3A9; font-family:Georgia,serif;">${name}</p>
-      <p style="margin:0 0 6px 0; font-size:13px; font-style:italic; color:#c8a84b; font-family:Georgia,serif;">${title}</p>
-      <p style="margin:0 0 2px 0; font-size:12px; font-family:Georgia,serif;">
-        <a href="tel:${phoneTel}" style="color:#83B3A9; text-decoration:underline;">${phoneFormatted}</a>
-        <span style="color:#a0a8b0;"> (Voice Only)</span>
-      </p>
-      <p style="margin:0; font-size:12px; font-family:Georgia,serif;">
-        <a href="http://www.madanplus.com" style="color:#83B3A9; text-decoration:underline;">www.madanplus.com</a>
-      </p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding-top:14px; padding-bottom:10px;">
-      <hr style="border:none; border-top:1px solid #3a4250; margin:0;" />
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding-bottom:6px;">
-      <p style="margin:0 0 2px 0; font-size:11.5px; color:#83B3A9; font-family:Georgia,serif;">
-        <strong>*For text messages, please use 347 956 4451</strong>
-      </p>
-      <p style="margin:0 0 2px 0; font-size:11.5px; color:#808080; font-style:italic; font-weight:bold; line-height:1.4; font-family:Georgia,serif;">To serve you better with a higher response rate, we are discontinuing <a href="mailto:info@madanplus.com" style="color:#4ab3d4; text-decoration:underline;">info@madanplus.com</a>.</p>
-      <p style="margin:0; font-size:11.5px; color:#808080; font-style:italic; font-weight:bold; line-height:1.4; font-family:Georgia,serif;">On a going-forward basis, please direct your inquiry to the appropriate inbox below.</p>
-    </td>
-  </tr>
-  <tr>
-    <td colspan="2" style="padding-top:4px;">
-      <table cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td style="padding-bottom:2px; vertical-align:top;">
-            <span style="font-size:11.5px; font-style:italic; font-weight:bold; color:#808080; font-family:Georgia,serif;">Advisors:</span><br/>
-            <span style="font-size:11.5px; color:#808080; font-family:Georgia,serif;">Please use <a href="mailto:advisors@madanplus.com" style="color:#4ab3d4; text-decoration:underline;">advisors@madanplus.com</a> for advisor or broker-related questions to ensure a timely response.</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:2px; vertical-align:top;">
-            <span style="font-size:11.5px; font-style:italic; font-weight:bold; color:#808080; font-family:Georgia,serif;">Operations:</span><br/>
-            <span style="font-size:11.5px; color:#808080; font-family:Georgia,serif;">Please use <a href="mailto:operations@madanplus.com" style="color:#4ab3d4; text-decoration:underline;">operations@madanplus.com</a> for case communication, carrier communication, or service-related requests.</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="padding-bottom:2px; vertical-align:top;">
-            <span style="font-size:11.5px; font-style:italic; font-weight:bold; color:#808080; font-family:Georgia,serif;">Financial Planning:</span><br/>
-            <span style="font-size:11.5px; color:#808080; font-family:Georgia,serif;">Please use <a href="mailto:planning@madanplus.com" style="color:#4ab3d4; text-decoration:underline;">planning@madanplus.com</a> for financial planning or estate planning questions and materials.</span>
-          </td>
-        </tr>
-        <tr>
-          <td style="vertical-align:top;">
-            <span style="font-size:11.5px; font-style:italic; font-weight:bold; color:#808080; font-family:Georgia,serif;">Case Design:</span><br/>
-            <span style="font-size:11.5px; color:#808080; font-family:Georgia,serif;">Please use <a href="mailto:design@madanplus.com" style="color:#4ab3d4; text-decoration:underline;">design@madanplus.com</a> for illustrations or case design support.</span>
-          </td>
-        </tr>
-      </table>
-    </td>
-  </tr>
+    function formatPhone(raw) {
+      const d = raw.replace(/\D/g, '');
+      if (d.length === 10) return d.slice(0,3) + '.' + d.slice(3,6) + '.' + d.slice(6);
+      if (d.length === 11 && d[0] === '1') return d.slice(1,4) + '.' + d.slice(4,7) + '.' + d.slice(7);
+      return raw;
+    }
+
+    function telDigits(raw) { return raw.replace(/\D/g, ''); }
+
+    function esc(str) {
+      return str
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
+    }
+
+    function buildFull(name, title, phone, relay) {
+      const pf = formatPhone(phone), pt = telDigits(phone);
+      const rf = formatPhone(relay), rt = telDigits(relay);
+      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:Georgia,'Times New Roman',serif;">
+<tr>
+  <td style="vertical-align:top;padding-right:18px;width:1%;">
+    <a href="http://www.madanplus.com" target="_blank" style="display:block;">
+      <img src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png" alt="Madan+ Logo" width="110" style="display:block;border:0;outline:none;" />
+    </a>
+  </td>
+  <td style="vertical-align:top;">
+    <p style="margin:0 0 2px 0;font-size:15px;font-weight:bold;color:#83B3A9;font-family:Georgia,serif;">${esc(name)}</p>
+    <p style="margin:0 0 6px 0;font-size:13px;font-style:italic;color:#c8a84b;font-family:Georgia,serif;">${esc(title)}</p>
+    <p style="margin:0 0 2px 0;font-size:12px;font-family:Georgia,serif;">
+      <a href="tel:${pt}" style="color:#83B3A9;text-decoration:underline;">${esc(pf)}</a>
+      <span style="color:#a0a8b0;"> (Voice Only)</span>
+    </p>
+    <p style="margin:0;font-size:12px;font-family:Georgia,serif;">
+      <a href="http://www.madanplus.com" style="color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
+    </p>
+  </td>
+</tr>
+<tr>
+  <td colspan="2" style="padding-top:14px;padding-bottom:10px;">
+    <hr style="border:none;border-top:1px solid #3a4250;margin:0;" />
+  </td>
+</tr>
+<tr>
+  <td colspan="2" style="padding-bottom:6px;">
+    <p style="margin:0 0 2px 0;font-size:11.5px;color:#83B3A9;font-family:Georgia,serif;"><strong>*For text messages, please use ${esc(rf)}</strong></p>
+    <p style="margin:0 0 2px 0;font-size:11.5px;color:#808080;font-style:italic;font-weight:bold;line-height:1.4;font-family:Georgia,serif;">To serve you better with a higher response rate, we are discontinuing <a href="mailto:info@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">info@madanplus.com</a>.</p>
+    <p style="margin:0;font-size:11.5px;color:#808080;font-style:italic;font-weight:bold;line-height:1.4;font-family:Georgia,serif;">On a going-forward basis, please direct your inquiry to the appropriate inbox below.</p>
+  </td>
+</tr>
+<tr>
+  <td colspan="2" style="padding-top:4px;">
+    <table cellpadding="0" cellspacing="0" border="0">
+      <tr><td style="padding-bottom:2px;vertical-align:top;">
+        <span style="font-size:11.5px;font-style:italic;font-weight:bold;color:#808080;font-family:Georgia,serif;">Advisors:</span><br/>
+        <span style="font-size:11.5px;color:#808080;font-family:Georgia,serif;">Please use <a href="mailto:advisors@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">advisors@madanplus.com</a> for advisor or broker-related questions to ensure a timely response.</span>
+      </td></tr>
+      <tr><td style="padding-bottom:2px;vertical-align:top;">
+        <span style="font-size:11.5px;font-style:italic;font-weight:bold;color:#808080;font-family:Georgia,serif;">Operations:</span><br/>
+        <span style="font-size:11.5px;color:#808080;font-family:Georgia,serif;">Please use <a href="mailto:operations@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">operations@madanplus.com</a> for case communication, carrier communication, or service-related requests.</span>
+      </td></tr>
+      <tr><td style="padding-bottom:2px;vertical-align:top;">
+        <span style="font-size:11.5px;font-style:italic;font-weight:bold;color:#808080;font-family:Georgia,serif;">Financial Planning:</span><br/>
+        <span style="font-size:11.5px;color:#808080;font-family:Georgia,serif;">Please use <a href="mailto:planning@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">planning@madanplus.com</a> for financial planning or estate planning questions and materials.</span>
+      </td></tr>
+      <tr><td style="vertical-align:top;">
+        <span style="font-size:11.5px;font-style:italic;font-weight:bold;color:#808080;font-family:Georgia,serif;">Case Design:</span><br/>
+        <span style="font-size:11.5px;color:#808080;font-family:Georgia,serif;">Please use <a href="mailto:design@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">design@madanplus.com</a> for illustrations or case design support.</span>
+      </td></tr>
+    </table>
+  </td>
+</tr>
 </table>`;
-  }
+    }
 
-  function buildReplySig(name, title, phone) {
-    const phoneFormatted = formatPhone(phone);
-    const phoneTel = telLink(phone);
-    return `<table cellpadding="0" cellspacing="0" border="0" style="font-family: Georgia, 'Times New Roman', serif;">
-  <tr>
-    <td style="vertical-align:top; padding-right:14px; width:1%;">
-      <a href="http://www.madanplus.com" target="_blank" style="display:block;">
-        <img src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png"
-          alt="Madan+ Logo" width="80"
-          style="display:block; border:0; outline:none;" />
-      </a>
-    </td>
-    <td style="vertical-align:top;">
-      <p style="margin:0 0 1px 0; font-size:13px; font-weight:bold; color:#83B3A9; font-family:Georgia,serif;">${name}</p>
-      <p style="margin:0 0 4px 0; font-size:11.5px; font-style:italic; color:#c8a84b; font-family:Georgia,serif;">${title}</p>
-      <p style="margin:0; font-size:11px; font-family:Georgia,serif;">
-        <a href="tel:${phoneTel}" style="color:#83B3A9; text-decoration:underline;">${phoneFormatted}</a>
-        <span style="color:#a0a8b0;"> &nbsp;·&nbsp; </span>
-        <a href="http://www.madanplus.com" style="color:#83B3A9; text-decoration:underline;">madanplus.com</a>
-      </p>
-    </td>
-  </tr>
+    function buildReply(name, title, phone) {
+      const pf = formatPhone(phone), pt = telDigits(phone);
+      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:Georgia,'Times New Roman',serif;">
+<tr>
+  <td style="vertical-align:top;padding-right:14px;width:1%;">
+    <a href="http://www.madanplus.com" target="_blank" style="display:block;">
+      <img src="https://mcusercontent.com/788c8d381f5f3b365f7299fcf/images/486f4774-9d82-b930-8504-192de4185f5d.png" alt="Madan+ Logo" width="80" style="display:block;border:0;outline:none;" />
+    </a>
+  </td>
+  <td style="vertical-align:top;">
+    <p style="margin:0 0 1px 0;font-size:13px;font-weight:bold;color:#83B3A9;font-family:Georgia,serif;">${esc(name)}</p>
+    <p style="margin:0 0 4px 0;font-size:11.5px;font-style:italic;color:#c8a84b;font-family:Georgia,serif;">${esc(title)}</p>
+    <p style="margin:0;font-size:11px;font-family:Georgia,serif;">
+      <a href="tel:${pt}" style="color:#83B3A9;text-decoration:underline;">${esc(pf)}</a>
+      <span style="color:#a0a8b0;"> · </span>
+      <a href="http://www.madanplus.com" style="color:#83B3A9;text-decoration:underline;">madanplus.com</a>
+    </p>
+  </td>
+</tr>
 </table>`;
-  }
-
-  function generateSignature() {
-    const name  = document.getElementById('f-name').value.trim();
-    const title = document.getElementById('f-title').value.trim();
-    const phone = document.getElementById('f-phone').value.trim();
-
-    if (!name || !title || !phone) {
-      alert('Please fill in all three fields before generating.');
-      return;
     }
 
-    document.getElementById('preview-full').innerHTML  = buildFullSig(name, title, phone);
-    document.getElementById('preview-reply').innerHTML = buildReplySig(name, title, phone);
-
-    const output = document.getElementById('output');
-    output.classList.add('visible');
-    output.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  }
-
-  function switchTab(tab, btn) {
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-    document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
-    btn.classList.add('active');
-    document.getElementById('tab-' + tab).classList.add('active');
-  }
-
-  function copySignature(type) {
-    const previewEl = document.getElementById('preview-' + type);
-    const btnEl     = document.getElementById('copy-' + type + '-btn');
-
-    // Focus the contenteditable element first
-    previewEl.focus();
-
-    // Select all content inside it
-    const range = document.createRange();
-    range.selectNodeContents(previewEl);
-    const sel = window.getSelection();
-    sel.removeAllRanges();
-    sel.addRange(range);
-
-    if (isIOS) {
-      // On iOS, we can't programmatically copy rich content.
-      // Selection is set — user just needs to tap "Copy" from the iOS popup.
-      btnEl.textContent = '✓ Now tap Copy above';
-      btnEl.classList.add('copied');
-      setTimeout(() => {
-        btnEl.textContent = 'Select & Copy';
-        btnEl.classList.remove('copied');
-      }, 4000);
-      return;
+    function showPane(id, btn) {
+      document.querySelectorAll('.sig-tab').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.sig-pane').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('pane-' + id).classList.add('active');
     }
 
-    // Desktop / Android: use execCommand or Clipboard API
-    let copied = false;
+    // Init: read URL params and render if present
+    (function init() {
+      const { name, title, phone, relay } = getParams();
+      if (name && title && phone && relay) {
+        const fn = document.getElementById('f-name');
+        const ft = document.getElementById('f-title');
+        const fp = document.getElementById('f-phone');
+        const fr = document.getElementById('f-relay');
+        if (fn) fn.value = name;
+        if (ft) ft.value = title;
+        if (fp) fp.value = phone;
+        if (fr) fr.value = relay;
 
-    // Try modern Clipboard API with HTML support first
-    if (window.ClipboardItem) {
-      try {
-        const html = previewEl.innerHTML;
-        const blob = new Blob([html], { type: 'text/html' });
-        const item = new ClipboardItem({ 'text/html': blob });
-        navigator.clipboard.write([item]).then(() => {
-          btnEl.textContent = '✓ Copied!';
-          btnEl.classList.add('copied');
-          setTimeout(() => {
-            btnEl.textContent = 'Select & Copy';
-            btnEl.classList.remove('copied');
-            sel.removeAllRanges();
-          }, 2500);
-        });
-        return;
-      } catch(e) { /* fall through */ }
-    }
+        document.getElementById('sig-full').innerHTML  = buildFull(name, title, phone, relay);
+        document.getElementById('sig-reply').innerHTML = buildReply(name, title, phone);
 
-    // Fallback: execCommand
-    try {
-      copied = document.execCommand('copy');
-    } catch(e) {}
-
-    if (copied) {
-      btnEl.textContent = '✓ Copied!';
-      btnEl.classList.add('copied');
-      setTimeout(() => {
-        btnEl.textContent = 'Select & Copy';
-        btnEl.classList.remove('copied');
-        sel.removeAllRanges();
-      }, 2500);
-    } else {
-      alert('Please manually select all content in the white box (Cmd+A / Ctrl+A) and copy (Cmd+C / Ctrl+C).');
-    }
-  }
-</script>
+        document.getElementById('form-card').style.display = 'none';
+        document.getElementById('sig-section').classList.add('visible');
+        window.scrollTo(0, 0);
+      }
+    })();
+  </script>
 
 </body>
 </html>
