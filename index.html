@@ -443,81 +443,58 @@
     function buildFull(name, title, phone, relay) {
       const pf = formatPhone(phone), pt = telDigits(phone);
       const rf = formatPhone(relay), rt = telDigits(relay);
+      const nameUpper = esc(name.toUpperCase());
       return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Segoe UI',Arial,sans-serif;">
 <tr>
-  <td style="vertical-align:top;padding-right:18px;width:1%;">
+  <td style="vertical-align:middle;padding-right:16px;">
     <a href="http://www.madanplus.com" target="_blank" style="display:block;">
-      <img src="https://taseen-madan.github.io/madanplus-signatures/logo.png" alt="Madan+ Logo" width="110" style="display:block;border:0;outline:none;" />
+      <img src="https://taseen-madan.github.io/madanplus-signatures/logo.png" alt="Madan+ Logo" width="135" style="display:block;border:0;outline:none;" />
     </a>
   </td>
-  <td style="vertical-align:top;">
-    <p style="margin:0 0 2px 0;font-size:11px;font-weight:bold;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;">${esc(name)}</p>
-    <p style="margin:0 0 6px 0;font-size:11px;font-style:italic;color:#c8a84b;font-family:'Segoe UI',Arial,sans-serif;">${esc(title)}</p>
-    <p style="margin:0 0 2px 0;font-size:10px;font-family:'Segoe UI',Arial,sans-serif;">
+  <td style="vertical-align:middle;">
+    <p style="margin:0 0 3px 0;font-size:11px;font-weight:bold;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;">${nameUpper}</p>
+    <p style="margin:0 0 5px 0;font-size:11px;font-style:italic;color:#c8a84b;font-family:'Segoe UI',Arial,sans-serif;">${esc(title)}</p>
+    <p style="margin:0 0 3px 0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;">
       <a href="tel:${pt}" style="color:#83B3A9;text-decoration:underline;">${esc(pf)}</a>
-      <span style="color:#a0a8b0;"> (Voice Only)</span>
+      <span style="color:#83B3A9;"> (Voice Only)</span>
     </p>
-    <p style="margin:0;font-size:10px;font-family:'Segoe UI',Arial,sans-serif;">
+    <p style="margin:0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;">
       <a href="http://www.madanplus.com" style="color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
     </p>
   </td>
 </tr>
+
 <tr>
-  <td colspan="2" style="padding-top:14px;padding-bottom:10px;">
-    <hr style="border:none;border-top:1px solid #3a4250;margin:0;" />
-  </td>
-</tr>
-<tr>
-  <td colspan="2" style="padding-bottom:6px;">
-    <p style="margin:0 0 2px 0;font-size:10px;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;"><strong>*For text messages, please use ${esc(rf)}</strong></p>
-    <p style="margin:0 0 2px 0;font-size:10px;color:#808080;font-style:italic;font-weight:bold;line-height:1.4;font-family:'Segoe UI',Arial,sans-serif;">To serve you better with a higher response rate, we are discontinuing <a href="mailto:info@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">info@madanplus.com</a>.</p>
-    <p style="margin:0;font-size:10px;color:#808080;font-style:italic;font-weight:bold;line-height:1.4;font-family:'Segoe UI',Arial,sans-serif;">On a going-forward basis, please direct your inquiry to the appropriate inbox below.</p>
-  </td>
-</tr>
-<tr>
-  <td colspan="2" style="padding-top:4px;">
-    <table cellpadding="0" cellspacing="0" border="0">
-      <tr><td style="padding-bottom:0;vertical-align:top;">
-        <span style="font-size:10px;font-style:italic;font-weight:bold;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Advisors: </span><span style="font-size:10px;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Please use <a href="mailto:advisors@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">advisors@madanplus.com</a> for advisor or broker-related questions to ensure a timely response.</span>
-      </td></tr>
-      <tr><td style="padding-bottom:0;vertical-align:top;">
-        <span style="font-size:10px;font-style:italic;font-weight:bold;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Operations: </span><span style="font-size:10px;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Please use <a href="mailto:operations@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">operations@madanplus.com</a> for case communication, carrier communication, or service-related requests.</span>
-      </td></tr>
-      <tr><td style="padding-bottom:0;vertical-align:top;">
-        <span style="font-size:10px;font-style:italic;font-weight:bold;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Financial Planning: </span><span style="font-size:10px;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Please use <a href="mailto:planning@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">planning@madanplus.com</a> for financial planning or estate planning questions and materials.</span>
-      </td></tr>
-      <tr><td style="padding-bottom:0;vertical-align:top;">
-        <span style="font-size:10px;font-style:italic;font-weight:bold;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Case Design: </span><span style="font-size:10px;color:#808080;font-family:'Segoe UI',Arial,sans-serif;">Please use <a href="mailto:design@madanplus.com" style="color:#4ab3d4;text-decoration:underline;">design@madanplus.com</a> for illustrations or case design support.</span>
-      </td></tr>
-    </table>
+  <td colspan="2" style="padding-top:16px;">
+    <p style="margin:0;font-size:11px;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;"><strong>*For text messages, please use ${esc(rf)}</strong></p>
   </td>
 </tr>
 </table>`;
     }
     function buildReply(name, title, phone) {
       const pf = formatPhone(phone), pt = telDigits(phone);
-      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Segoe UI',Arial,sans-serif;max-width:600px;">
+      const nameUpper = esc(name.toUpperCase());
+      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Segoe UI',Arial,sans-serif;border-collapse:collapse;">
 <tr>
-  <td style="padding-bottom:6px;">
-    <img src="https://taseen-madan.github.io/madanplus-signatures/Bannerreply.png" alt="" width="453" height="23" style="display:block;border:0;outline:none;width:453px;height:23px;" />
+  <td style="padding:0 0 3px 0;line-height:0;">
+    <img src="https://taseen-madan.github.io/madanplus-signatures/banner.png" alt="" style="display:block;border:0;outline:none;width:100%;height:auto;" />
   </td>
 </tr>
 <tr>
-  <td style="padding-top:4px;">
-    <p style="margin:0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;letter-spacing:0.03em;">
-      <span style="color:#83B3A9;font-weight:bold;">${esc(name)}</span>
+  <td style="padding:0;white-space:nowrap;">
+    <p style="margin:0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;white-space:nowrap;">
+      <span style="color:#83B3A9;">${nameUpper}</span>
       <span style="color:#83B3A9;"> | </span>
       <span style="color:#c8a84b;font-style:italic;font-weight:normal;">${esc(title)}</span>
       <span style="color:#83B3A9;"> | </span>
-      <a href="tel:${pt}" style="color:#83B3A9;text-decoration:none;">${esc(pf)}</a>
+      <strong><a href="tel:${pt}" style="color:#83B3A9;text-decoration:none;">${esc(pf)}</a></strong>
       <span style="color:#83B3A9;"> | </span>
-      <a href="http://www.madanplus.com" style="color:#83B3A9;text-decoration:none;">www.madanplus.com</a>
+      <a href="http://www.madanplus.com" target="_blank" style="color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
     </p>
   </td>
 </tr>
 </table>`;
     }
-
 
     function showPane(id, btn) {
       document.querySelectorAll('.sig-tab').forEach(b => b.classList.remove('active'));
