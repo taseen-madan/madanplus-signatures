@@ -474,23 +474,21 @@
     function buildReply(name, title, phone) {
       const pf = formatPhone(phone), pt = telDigits(phone);
       const nameUpper = esc(name.toUpperCase());
-      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Segoe UI',Arial,sans-serif;border-collapse:collapse;width:1px;white-space:nowrap;">
+      return `<table cellpadding="0" cellspacing="0" border="0" width="500" style="font-family:'Segoe UI',Arial,sans-serif;border-collapse:collapse;">
 <tr>
-  <td style="padding:0 0 3px 0;line-height:0;">
-    <img src="https://taseen-madan.github.io/madanplus-signatures/Banner_reply_sig.png" alt="" style="display:block;border:0;outline:none;width:100%;height:auto;" />
+  <td width="500" style="padding:0 0 3px 0;line-height:0;">
+    <img src="https://taseen-madan.github.io/madanplus-signatures/Banner_reply_sig.png" alt="" width="500" height="25" style="display:block;border:0;outline:none;width:500px;height:25px;" />
   </td>
 </tr>
 <tr>
-  <td style="padding:0;white-space:nowrap;">
-    <p style="margin:0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;white-space:nowrap;">
-      <span style="color:#83B3A9;">${nameUpper}</span>
-      <span style="color:#83B3A9;"> | </span>
-      <span style="color:#c8a84b;font-style:italic;font-weight:normal;">${esc(title)}</span>
-      <span style="color:#83B3A9;"> | </span>
-      <strong><a href="tel:${pt}" style="color:#83B3A9;text-decoration:none;">${esc(pf)}</a></strong>
-      <span style="color:#83B3A9;"> | </span>
-      <a href="http://www.madanplus.com" target="_blank" style="color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
-    </p>
+  <td width="500" style="padding:2px 0 0 0;">
+    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;color:#83B3A9;">${nameUpper}</span>
+    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
+    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-style:italic;font-weight:normal;color:#c8a84b;">${esc(title)}</span>
+    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
+    <strong><a href="tel:${pt}" style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;text-decoration:none;">${esc(pf)}</a></strong>
+    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
+    <a href="http://www.madanplus.com" target="_blank" style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
   </td>
 </tr>
 </table>`;
