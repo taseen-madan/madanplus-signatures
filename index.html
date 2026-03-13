@@ -1,25 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Madan+ Signature Generator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --teal: #83B3A9;
-      --gold: #c8a84b;
-      --dark-bg: #0f1319;
-      --card-bg: #161c26;
+      --teal: #84b4aa;
+      --gold: #c3971e;
+      --dark: #0f1319;
+      --card: #161c26;
       --border: #2a3244;
-      --text-muted: #808080;
-      --text-dim: #a0a8b0;
+      --dim: #a0a8b0;
     }
-
     body {
-      background: var(--dark-bg);
+      background: var(--dark);
       color: #e0e6ef;
       font-family: 'Lato', sans-serif;
       min-height: 100vh;
@@ -28,195 +25,135 @@
       align-items: center;
       padding: 0 0 80px;
     }
-
     body::before {
       content: '';
       position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(131,179,169,0.07) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(200,168,75,0.05) 0%, transparent 60%);
+        radial-gradient(ellipse 60% 40% at 20% 10%, rgba(132,180,170,0.07) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 30% at 80% 80%, rgba(195,151,30,0.05) 0%, transparent 60%);
       pointer-events: none;
       z-index: 0;
     }
 
-    /* ── SAFARI BANNER ── */
+    /* SAFARI BANNER */
     .safari-banner {
       width: 100%;
-      background: linear-gradient(135deg, #1a2535 0%, #1e2d3d 100%);
+      background: linear-gradient(135deg, #1a2535, #1e2d3d);
       border-bottom: 2px solid var(--gold);
       padding: 16px 24px;
       display: flex;
       align-items: flex-start;
       gap: 14px;
       position: relative;
-      z-index: 10;
-    }
-
-    .safari-banner-icon {
-      font-size: 28px;
-      line-height: 1;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-
-    .safari-banner-text {
-      flex: 1;
-    }
-
-    .safari-banner-text strong {
-      display: block;
-      font-size: 13px;
-      color: var(--gold);
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 5px;
-    }
-
-    .safari-banner-text p {
-      font-size: 13px;
-      color: #c0cad8;
-      line-height: 1.6;
-      margin: 0;
-    }
-
-    .safari-banner-text .step {
-      display: inline-block;
-      background: rgba(200,168,75,0.15);
-      border: 1px solid rgba(200,168,75,0.3);
-      border-radius: 3px;
-      padding: 1px 7px;
-      font-size: 12px;
-      color: var(--gold);
-      font-weight: 700;
-      margin: 0 2px;
-    }
-
-    .banner-dismiss {
-      background: transparent;
-      border: none;
-      color: var(--text-dim);
-      font-size: 20px;
-      cursor: pointer;
-      padding: 0 4px;
-      line-height: 1;
-      flex-shrink: 0;
-      align-self: flex-start;
-    }
-
-    /* ── MAIN CONTENT ── */
-    .container {
-      position: relative;
       z-index: 1;
-      width: 100%;
-      max-width: 680px;
-      padding: 40px 20px 0;
+    }
+    .safari-icon { font-size: 22px; flex-shrink: 0; margin-top: 1px; }
+    .safari-text strong { display: block; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold); margin-bottom: 5px; }
+    .safari-text p { font-size: 13px; color: var(--dim); line-height: 1.6; }
+    .safari-step { background: rgba(255,255,255,0.08); border-radius: 3px; padding: 1px 6px; font-size: 11px; font-weight: 700; }
+    .safari-dismiss {
+      position: absolute; top: 12px; right: 14px;
+      background: transparent; border: none; color: var(--dim);
+      font-size: 18px; cursor: pointer; line-height: 1; padding: 4px;
     }
 
+    /* LAYOUT */
+    .wrap {
+      width: 100%; max-width: 640px;
+      padding: 0 20px;
+      position: relative; z-index: 1;
+    }
+
+    /* HEADER */
     .header {
       text-align: center;
-      margin-bottom: 36px;
+      padding: 48px 0 36px;
     }
-
-    .header img { display: block; margin: 0 auto 18px; opacity: 0.9; }
-
     .header h1 {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 30px;
+      font-size: 32px;
       font-weight: 600;
       color: var(--teal);
       letter-spacing: 0.04em;
       margin-bottom: 6px;
     }
-
     .header p {
-      font-size: 12px;
-      color: var(--text-dim);
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-    }
-
-    .card {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 32px 36px;
-      margin-bottom: 28px;
-    }
-
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--teal);
-      margin-bottom: 22px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid var(--border);
-      letter-spacing: 0.04em;
-    }
-
-    .field-group { display: grid; gap: 18px; }
-    .field { display: flex; flex-direction: column; gap: 6px; }
-
-    label {
       font-size: 11px;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      color: var(--text-dim);
-      font-weight: 700;
+      color: var(--dim);
+    }
+    .header-rule {
+      width: 60px; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      margin: 16px auto 0;
     }
 
-    input[type="text"], input[type="tel"] {
-      background: #0f1319;
+    /* CARD */
+    .card {
+      background: var(--card);
       border: 1px solid var(--border);
-      border-radius: 3px;
-      padding: 12px 14px;
-      font-size: 16px;
+      border-radius: 6px;
+      padding: 32px 28px;
+    }
+
+    /* FORM */
+    .field { margin-bottom: 20px; }
+    .field label {
+      display: block;
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--dim);
+      margin-bottom: 7px;
+    }
+    .field input {
+      width: 100%;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 11px 14px;
       font-family: 'Lato', sans-serif;
+      font-size: 14px;
       color: #e0e6ef;
       outline: none;
-      width: 100%;
+      transition: border-color 0.2s;
       -webkit-appearance: none;
     }
-
-    input:focus {
-      border-color: var(--teal);
-      box-shadow: 0 0 0 3px rgba(131,179,169,0.1);
+    .field input:focus { border-color: var(--teal); }
+    .field input::placeholder { color: #3a4255; }
+    .field-hint {
+      font-size: 10px;
+      color: #3a4a5a;
+      margin-top: 5px;
     }
-
-    input::placeholder { color: #3a4250; }
-
     .btn-generate {
-      margin-top: 24px;
       width: 100%;
-      padding: 15px;
-      background: var(--teal);
+      padding: 14px;
+      background: linear-gradient(135deg, var(--teal), #6fa89e);
       color: #0f1319;
       font-family: 'Lato', sans-serif;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       border: none;
-      border-radius: 3px;
+      border-radius: 4px;
       cursor: pointer;
+      margin-top: 8px;
       -webkit-appearance: none;
     }
-
     .btn-generate:active { opacity: 0.85; }
 
-    /* ── OUTPUT ── */
+    /* OUTPUT */
     .sig-section { display: none; }
     .sig-section.visible { display: block; }
 
-    .sig-tabs {
-      display: flex;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
-
+    .sig-tabs { display: flex; gap: 8px; margin-bottom: 14px; }
     .sig-tab {
-      padding: 8px 18px;
+      padding: 9px 20px;
       background: transparent;
       border: 1px solid var(--border);
       border-radius: 3px;
@@ -225,42 +162,65 @@
       font-weight: 700;
       letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text-dim);
+      color: var(--dim);
       cursor: pointer;
       -webkit-appearance: none;
     }
-
-    .sig-tab.active {
-      background: var(--teal);
-      border-color: var(--teal);
-      color: #0f1319;
-    }
+    .sig-tab.active { background: var(--teal); border-color: var(--teal); color: #0f1319; }
 
     .sig-pane { display: none; }
     .sig-pane.active { display: block; }
 
-    .sig-instructions {
-      background: rgba(131,179,169,0.08);
-      border: 1px solid rgba(131,179,169,0.2);
+    .calibration-bar {
       border-radius: 4px 4px 0 0;
+      padding: 14px 18px;
+      margin-bottom: 0;
+    }
+    .calibration-bar.teal {
+      background: rgba(132,180,170,0.08);
+      border: 1px solid rgba(132,180,170,0.2);
+      border-bottom: none;
+    }
+    .calibration-bar.gold {
+      background: rgba(195,151,30,0.08);
+      border: 1px solid rgba(195,151,30,0.2);
+      border-bottom: none;
+    }
+    .calibration-bar strong {
+      display: block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 10px;
+    }
+    .calibration-bar.teal strong { color: var(--teal); }
+    .calibration-bar.gold strong { color: var(--gold); }
+    .slider-row { display: flex; align-items: center; gap: 12px; }
+    .slider-row input[type=range] { flex: 1; height: 4px; cursor: pointer; }
+    .slider-row input.teal-slider { accent-color: var(--teal); }
+    .slider-row input.gold-slider { accent-color: var(--gold); }
+    .slider-val { font-size: 13px; font-weight: 700; min-width: 60px; text-align: right; }
+    .slider-val.teal { color: var(--teal); }
+    .slider-val.gold { color: var(--gold); }
+    .calibration-hint { font-size: 11px; color: var(--dim); margin-top: 8px; line-height: 1.5; }
+
+    .sig-instructions {
+      background: rgba(132,180,170,0.05);
+      border: 1px solid rgba(132,180,170,0.15);
+      border-top: none;
       padding: 14px 18px;
       font-size: 13px;
       color: var(--teal);
       line-height: 1.7;
     }
-
     .sig-instructions strong {
       display: block;
-      margin-bottom: 6px;
-      font-size: 11px;
+      font-size: 10px;
       text-transform: uppercase;
       letter-spacing: 0.08em;
+      margin-bottom: 6px;
     }
-
-    .sig-instructions ol {
-      padding-left: 18px;
-      margin: 0;
-    }
+    .sig-instructions ol { padding-left: 18px; margin: 0; }
 
     .sig-box {
       background: #ffffff;
@@ -272,22 +232,42 @@
       user-select: text;
       cursor: text;
       outline: none;
-      border-radius: 0 0 4px 4px;
+      border-radius: 0 0 0 0;
     }
 
-    .reply-note {
-      margin-bottom: 10px;
+    .copy-btn {
+      display: block;
+      width: 100%;
+      padding: 13px;
+      background: var(--teal);
+      color: #0f1319;
+      font-family: 'Lato', sans-serif;
       font-size: 12px;
-      color: var(--text-muted);
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      border: none;
+      border-radius: 0 0 4px 4px;
+      cursor: pointer;
+      -webkit-appearance: none;
+      transition: background 0.2s;
+    }
+    .copy-btn:active { opacity: 0.85; }
+    .copy-btn.copied { background: #4caf8a; }
+
+    .reply-note {
+      font-size: 12px;
+      color: #555f70;
       font-style: italic;
       line-height: 1.5;
+      margin-bottom: 10px;
     }
 
     .btn-reset {
       margin-top: 20px;
       background: transparent;
       border: 1px solid var(--border);
-      color: var(--text-dim);
+      color: var(--dim);
       font-family: 'Lato', sans-serif;
       font-size: 11px;
       font-weight: 700;
@@ -302,104 +282,76 @@
 
     @media (max-width: 480px) {
       .card { padding: 24px 18px; }
-      .header h1 { font-size: 24px; }
-      .safari-banner { padding: 14px 16px; }
-    }
-
-    .copy-btn {
-      display: block;
-      width: 100%;
-      margin-top: 12px;
-      padding: 13px;
-      background: var(--teal);
-      color: #0f1319;
-      font-family: 'Lato', sans-serif;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-      -webkit-appearance: none;
-      transition: opacity 0.2s;
-    }
-    .copy-btn:active { opacity: 0.8; }
-    .copy-btn.copied {
-      background: #4caf8a;
+      .header h1 { font-size: 26px; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── SAFARI REMINDER BANNER ── -->
+  <!-- SAFARI BANNER -->
   <div class="safari-banner" id="safari-banner">
-    <div class="safari-banner-icon">🧭</div>
-    <div class="safari-banner-text">
-      <strong>Must be opened in Safari to work</strong>
-      <p>
-        In Outlook, tap the <span class="step">⋯</span> or <span class="step">Share</span> button on this attachment
-        → tap <span class="step">Open in Safari</span> — then follow the steps below.
-      </p>
+    <div class="safari-icon">🧭</div>
+    <div class="safari-text">
+      <strong>Open in Safari to copy correctly</strong>
+      <p>In Outlook, tap <span class="safari-step">⋯</span> or <span class="safari-step">Share</span> on this attachment → tap <span class="safari-step">Open in Safari</span> — then follow the steps below.</p>
     </div>
-    <button class="banner-dismiss" onclick="document.getElementById('safari-banner').style.display='none'" aria-label="Dismiss">✕</button>
+    <button class="safari-dismiss" onclick="this.parentElement.style.display='none'">✕</button>
   </div>
 
-  <div class="container">
+  <div class="wrap">
 
     <div class="header">
-      <img src="https://taseen-madan.github.io/madanplus-signatures/logo.png"
-        alt="Madan+" width="110" />
-      <h1>Signature Generator</h1>
-      <p>iOS Outlook · Internal Tool</p>
+      <h1>Madan<span style="color:var(--gold)">+</span> Signatures</h1>
+      <p>Self-service signature generator</p>
+      <div class="header-rule"></div>
     </div>
 
     <!-- FORM -->
     <div class="card" id="form-card">
-      <div class="card-title">Your Details</div>
-      <form method="GET" action="">
-        <div class="field-group">
-          <div class="field">
-            <label for="f-name">Full Name</label>
-            <input id="f-name" name="name" type="text" placeholder="e.g. Rumman Khan"
-              autocomplete="off" autocorrect="off" autocapitalize="words" />
-          </div>
-          <div class="field">
-            <label for="f-title">Job Title</label>
-            <input id="f-title" name="title" type="text" placeholder="e.g. Executive Assistant"
-              autocomplete="off" autocorrect="off" />
-          </div>
-          <div class="field">
-            <label for="f-phone">Phone Number (Voice Only)</label>
-            <input id="f-phone" name="phone" type="tel" placeholder="e.g. 3474375542"
-              autocomplete="off" />
-          </div>
-          <div class="field">
-            <label for="f-relay">Global Relay Number (Text Only)</label>
-            <input id="f-relay" name="relay" type="tel" placeholder="e.g. 3479564451"
-              autocomplete="off" />
-          </div>
-        </div>
-        <button type="submit" class="btn-generate">Generate My Signature →</button>
-      </form>
+      <div class="field">
+        <label for="f-name">Full Name</label>
+        <input type="text" id="f-name" placeholder="e.g. Kuldeep S. Madan" autocomplete="name"/>
+      </div>
+      <div class="field">
+        <label for="f-title">Job Title</label>
+        <input type="text" id="f-title" placeholder="e.g. Founder + CEO"/>
+      </div>
+      <div class="field">
+        <label for="f-phone">Phone Number <span style="color:var(--dim);font-weight:400;text-transform:none;">(Voice Only)</span></label>
+        <input type="tel" id="f-phone" placeholder="e.g. 7324067524"/>
+        <div class="field-hint">Enter 10 digits — formatted automatically</div>
+      </div>
+      <div class="field">
+        <label for="f-relay">Global Relay Number <span style="color:var(--dim);font-weight:400;text-transform:none;">(Text Only)</span></label>
+        <input type="tel" id="f-relay" placeholder="e.g. 7323346422"/>
+        <div class="field-hint">Enter 10 digits — formatted automatically</div>
+      </div>
+      <button class="btn-generate" onclick="generate()">Generate My Signature →</button>
     </div>
 
     <!-- OUTPUT -->
-    <div class="sig-section" id="sig-section">
+    <div class="card sig-section" id="sig-section">
 
       <div class="sig-tabs">
-        <button class="sig-tab active" onclick="showPane('full', this)">Full Signature</button>
-        <button class="sig-tab" onclick="showPane('reply', this)">Reply / Compact</button>
+        <button class="sig-tab active" onclick="showPane('full', this)">New Email</button>
+        <button class="sig-tab" onclick="showPane('reply', this)">Reply</button>
       </div>
 
-      <!-- FULL -->
+      <!-- FULL SIG PANE -->
       <div class="sig-pane active" id="pane-full">
+        <div class="calibration-bar teal">
+          <strong>🎚 Logo Size</strong>
+          <div class="slider-row">
+            <input type="range" class="teal-slider" id="logo-slider" min="80" max="220" value="185" step="1" oninput="updateLogo(this.value)"/>
+            <span class="slider-val teal" id="logo-label">185×112px</span>
+          </div>
+          <div class="calibration-hint">Drag to match the reference size, then Copy.</div>
+        </div>
         <div class="sig-instructions">
-          <strong>📋 How to install on iOS Outlook</strong>
+          <strong>📋 How to install — iOS Outlook</strong>
           <ol>
-            <li>Long-press anywhere inside the white box below</li>
-            <li>Tap <strong>Select All</strong>, then tap <strong>Copy</strong></li>
-            <li>Open Outlook → tap your profile icon (top-left) → Settings → Signature</li>
+            <li>Hit <strong>Copy Full Signature</strong> below</li>
+            <li>Open Outlook → tap your profile icon → Settings → Signature</li>
             <li>Tap into the signature field and <strong>Paste</strong></li>
           </ol>
         </div>
@@ -407,15 +359,23 @@
         <button class="copy-btn" id="btn-full" onclick="copySig('sig-full', this)">📋 Copy Full Signature</button>
       </div>
 
-      <!-- REPLY -->
+      <!-- REPLY SIG PANE -->
       <div class="sig-pane" id="pane-reply">
-        <p class="reply-note">💡 Compact version — less intrusive on reply chains. Same install steps apply.</p>
+        <p class="reply-note">Compact version for reply chains.</p>
+        <div class="calibration-bar gold">
+          <strong>🎚 Banner Width</strong>
+          <div class="slider-row">
+            <input type="range" class="gold-slider" id="banner-slider" min="200" max="600" value="350" step="5" oninput="updateBanner(this.value)"/>
+            <span class="slider-val gold" id="banner-label">350px</span>
+          </div>
+          <div class="calibration-hint">Drag until the banner matches your text line length. Both banner and text are locked to the same width — Outlook cannot stretch one independently.</div>
+        </div>
         <div class="sig-instructions">
-          <strong>📋 How to install on iOS Outlook</strong>
+          <strong>📋 How to install — iOS Outlook</strong>
           <ol>
-            <li>Long-press anywhere inside the white box below</li>
-            <li>Tap <strong>Select All</strong>, then tap <strong>Copy</strong></li>
-            <li>Open Outlook → tap your profile icon (top-left) → Settings → Signature</li>
+            <li>Use the slider to align the banner with the text</li>
+            <li>Hit <strong>Copy Reply Signature</strong> below</li>
+            <li>Open Outlook → tap your profile icon → Settings → Signature</li>
             <li>Tap into the signature field and <strong>Paste</strong></li>
           </ol>
         </div>
@@ -426,98 +386,116 @@
       <button class="btn-reset" onclick="window.location.href=window.location.pathname">← Edit Details</button>
 
     </div>
-
   </div>
 
   <script>
-    // Hide Safari banner if already in Safari or desktop
-    const ua = navigator.userAgent;
-    const isInSafari = /^((?!chrome|android).)*safari/i.test(ua) || !ua.includes('Mobile');
-    if (isInSafari) {
-      const banner = document.getElementById('safari-banner');
-      if (banner) banner.style.display = 'none';
-    }
+    // Hide safari banner on desktop/safari
+    (function() {
+      const ua = navigator.userAgent;
+      const isSafari = /^((?!chrome|android).)*safari/i.test(ua) || !/Mobile/.test(ua);
+      if (isSafari) document.getElementById('safari-banner').style.display = 'none';
+    })();
 
     function getParams() {
       const p = new URLSearchParams(window.location.search);
-      return {
-        name:  decodeURIComponent((p.get('name')  || '').replace(/\+/g,' ')),
-        title: decodeURIComponent((p.get('title') || '').replace(/\+/g,' ')),
-        phone: decodeURIComponent((p.get('phone') || '').replace(/\+/g,' ')),
-        relay: decodeURIComponent((p.get('relay') || '').replace(/\+/g,' '))
-      };
+      const dec = k => decodeURIComponent((p.get(k)||'').replace(/\+/g,' '));
+      return { name: dec('name'), title: dec('title'), phone: dec('phone'), relay: dec('relay') };
     }
 
     function formatPhone(raw) {
-      const d = raw.replace(/\D/g, '');
-      if (d.length === 10) return d.slice(0,3) + '.' + d.slice(3,6) + '.' + d.slice(6);
-      if (d.length === 11 && d[0] === '1') return d.slice(1,4) + '.' + d.slice(4,7) + '.' + d.slice(7);
+      const d = raw.replace(/\D/g,'');
+      if (d.length === 10) return d.slice(0,3)+'.'+d.slice(3,6)+'.'+d.slice(6);
+      if (d.length === 11 && d[0]==='1') return d.slice(1,4)+'.'+d.slice(4,7)+'.'+d.slice(7);
       return raw;
     }
 
-    function telDigits(raw) { return raw.replace(/\D/g, ''); }
+    function telDigits(raw) { return raw.replace(/\D/g,''); }
 
-    function esc(str) {
-      return str
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;');
+    function esc(s) {
+      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
+
+    var currentLogoW = 185;
+    var currentLogoH = 112;
 
     function buildFull(name, title, phone, relay) {
       const pf = formatPhone(phone), pt = telDigits(phone);
-      const rf = formatPhone(relay), rt = telDigits(relay);
-      const nameUpper = esc(name.toUpperCase());
-      return `<table cellpadding="0" cellspacing="0" border="0" style="font-family:'Segoe UI',Arial,sans-serif;">
+      const rf = formatPhone(relay);
+      const n = esc(name.toUpperCase());
+      const w = currentLogoW, h = currentLogoH;
+      return `<table cellpadding="0" cellspacing="0" border="0" width="600" style="width:600px;font-family:'Segoe UI',Arial,sans-serif;">
 <tr>
-  <td style="vertical-align:middle;padding-right:16px;">
-    <a href="http://www.madanplus.com" target="_blank" style="display:block;">
-      <img src="https://taseen-madan.github.io/madanplus-signatures/logo.png" alt="Madan+ Logo" width="135" style="display:block;border:0;outline:none;" />
+  <td style="vertical-align:middle;padding-right:18px;width:1%;">
+    <a href="http://www.madanplus.com" target="_blank" style="display:block;text-decoration:none;">
+      <img id="logo-img" src="https://taseen-madan.github.io/madanplus-signatures/logo.png" alt="Madan+ Logo" width="${w}" height="${h}" style="display:block;border:0;outline:none;width:${w}px;height:${h}px;" />
     </a>
   </td>
   <td style="vertical-align:middle;">
-    <p style="margin:0 0 3px 0;font-size:11px;font-weight:bold;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;">${nameUpper}</p>
-    <p style="margin:0 0 5px 0;font-size:11px;font-style:italic;color:#c8a84b;font-family:'Segoe UI',Arial,sans-serif;">${esc(title)}</p>
-    <p style="margin:0 0 3px 0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;">
-      <a href="tel:${pt}" style="color:#83B3A9;text-decoration:underline;">${esc(pf)}</a>
-      <span style="color:#83B3A9;"> (Voice Only)</span>
+    <p style="margin:0 0 2px 0;font-size:11pt;font-weight:bold;color:#85B4AA;font-family:'Segoe UI',Arial,sans-serif;">${n}</p>
+    <p style="margin:0 0 6px 0;font-size:11pt;font-style:italic;color:#C3971D;font-family:Georgia,serif;">${esc(title)}</p>
+    <p style="margin:0 0 2px 0;font-size:10pt;font-family:'Segoe UI',Arial,sans-serif;">
+      <a href="tel:${pt}" style="color:#83B4A9;text-decoration:underline;font-size:10pt;font-family:'Segoe UI',Arial,sans-serif;">${esc(pf)}</a>
+      <span style="color:#83B4A9;font-size:10pt;font-family:'Segoe UI',Arial,sans-serif;"> (Voice Only)</span>
     </p>
-    <p style="margin:0;font-size:11px;font-family:'Segoe UI',Arial,sans-serif;">
-      <a href="http://www.madanplus.com" style="color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
+    <p style="margin:0;font-size:10pt;font-family:'Segoe UI',Arial,sans-serif;">
+      <a href="http://www.madanplus.com" target="_blank" style="color:#83B4A9;text-decoration:underline;font-size:10pt;font-family:'Segoe UI',Arial,sans-serif;">www.madanplus.com</a>
     </p>
   </td>
 </tr>
-
 <tr>
   <td colspan="2" style="padding-top:16px;">
-    <p style="margin:0;font-size:10px;color:#83B3A9;font-family:'Segoe UI',Arial,sans-serif;">*For text messages, please use ${esc(rf)}</p>
+    <p style="margin:0;font-size:10pt;color:#85B5AA;font-family:'Segoe UI',Arial,sans-serif;">*For text messages, please use ${esc(rf)}</p>
   </td>
 </tr>
 </table>`;
     }
     function buildReply(name, title, phone) {
       const pf = formatPhone(phone), pt = telDigits(phone);
-      const nameUpper = esc(name.toUpperCase());
-      return `<table cellpadding="0" cellspacing="0" border="0" width="500" style="font-family:'Segoe UI',Arial,sans-serif;border-collapse:collapse;">
+      const n = esc(name.toUpperCase());
+      const t = esc(title.toUpperCase());
+      const px = currentBannerPx;
+      // OUTLOOK FIX: outer table locked to px, inner img locked with both attribute + style + mso overrides.
+      // The text row width matches the banner exactly so Outlook cannot widen one and not the other.
+      // overflow:hidden on the img td prevents Outlook from reflowing past the declared width.
+      return `<table cellpadding="0" cellspacing="0" border="0" width="${px}" style="width:${px}px;max-width:${px}px;border-collapse:collapse;mso-table-lspace:0pt;mso-table-rspace:0pt;table-layout:fixed;">
 <tr>
-  <td width="500" style="padding:0 0 3px 0;line-height:0;">
-    <img src="https://taseen-madan.github.io/madanplus-signatures/Banner_reply_sig.png" alt="" width="500" height="25" style="display:block;border:0;outline:none;width:500px;height:25px;" />
+  <td width="${px}" style="width:${px}px;max-width:${px}px;padding:0;line-height:0;font-size:0;overflow:hidden;mso-line-height-rule:exactly;">
+    <img src="https://taseen-madan.github.io/madanplus-signatures/Banner_reply_sig.png" alt="" width="${px}" height="20" style="display:block;border:0;outline:none;width:${px}px;height:20px;max-width:${px}px;mso-width-source:userset;mso-height-source:userset;" />
   </td>
 </tr>
 <tr>
-  <td width="500" style="padding:2px 0 0 0;">
-    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;color:#83B3A9;">${nameUpper}</span>
-    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
-    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;font-style:italic;font-weight:normal;color:#c8a84b;">${esc(title)}</span>
-    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
-    <strong><a href="tel:${pt}" style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;text-decoration:none;">${esc(pf)}</a></strong>
-    <span style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;"> | </span>
-    <a href="http://www.madanplus.com" target="_blank" style="font-size:11px;font-family:'Segoe UI',Arial,sans-serif;color:#83B3A9;text-decoration:underline;">www.madanplus.com</a>
+  <td width="${px}" style="width:${px}px;max-width:${px}px;padding:4px 0 0 0;mso-line-height-rule:exactly;">
+    <span style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;color:#84B3AA;">${n}</span>
+    <span style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;color:#84B3AA;"> | </span>
+    <span style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;letter-spacing:0.02em;color:#C3971D;">${t}</span>
+    <span style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;color:#84B3AA;"> | </span>
+    <strong><a href="tel:${pt}" style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;font-weight:bold;color:#84B3AA;text-decoration:underline;">${esc(pf)}</a></strong>
+    <span style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;color:#84B3AA;"> | </span>
+    <a href="http://www.madanplus.com" target="_blank" style="font-size:9pt;font-family:'Segoe UI',Arial,sans-serif;color:#84B3AA;text-decoration:underline;">www.madanplus.com</a>
   </td>
 </tr>
 </table>`;
     }
+
+    var currentBannerPx = 350;
+
+    function updateBanner(px) {
+      px = parseInt(px);
+      currentBannerPx = px;
+      document.getElementById('banner-label').textContent = px + 'px';
+      const { name, title, phone } = getParams();
+      document.getElementById('sig-reply').innerHTML = buildReply(name, title, phone);
+    }
+
+    function updateLogo(w) {
+      w = parseInt(w);
+      const h = Math.round(w * 259 / 430);
+      currentLogoW = w; currentLogoH = h;
+      document.getElementById('logo-label').textContent = w + '×' + h + 'px';
+      const { name, title, phone, relay } = getParams();
+      document.getElementById('sig-full').innerHTML = buildFull(name, title, phone, relay);
+    }
+
 
     function showPane(id, btn) {
       document.querySelectorAll('.sig-tab').forEach(b => b.classList.remove('active'));
@@ -526,36 +504,12 @@
       document.getElementById('pane-' + id).classList.add('active');
     }
 
-    // Init: read URL params and render if present
-    (function init() {
-      const { name, title, phone, relay } = getParams();
-      if (name && title && phone && relay) {
-        const fn = document.getElementById('f-name');
-        const ft = document.getElementById('f-title');
-        const fp = document.getElementById('f-phone');
-        const fr = document.getElementById('f-relay');
-        if (fn) fn.value = name;
-        if (ft) ft.value = title;
-        if (fp) fp.value = phone;
-        if (fr) fr.value = relay;
-
-        document.getElementById('sig-full').innerHTML  = buildFull(name, title, phone, relay);
-        document.getElementById('sig-reply').innerHTML = buildReply(name, title, phone);
-
-        document.getElementById('form-card').style.display = 'none';
-        document.getElementById('sig-section').classList.add('visible');
-        window.scrollTo(0, 0);
-      }
-    })();
-
     async function copySig(id, btn) {
       const el = document.getElementById(id);
-      const html = el.innerHTML;
       try {
-        const blob = new Blob([html], { type: 'text/html' });
+        const blob = new Blob([el.innerHTML], { type: 'text/html' });
         await navigator.clipboard.write([new ClipboardItem({ 'text/html': blob })]);
       } catch(e) {
-        // Fallback: manual selection
         const range = document.createRange();
         range.selectNodeContents(el);
         const sel = window.getSelection();
@@ -565,10 +519,58 @@
         sel.removeAllRanges();
       }
       const orig = btn.textContent;
-      btn.textContent = '✓ Copied! Now paste into Outlook';
+      btn.textContent = '✓ Copied! Paste into Outlook';
       btn.classList.add('copied');
       setTimeout(() => { btn.textContent = orig; btn.classList.remove('copied'); }, 3000);
     }
+
+    function buildReplyFixed(name, title, phone, px) {
+      // Identical to buildReply — kept for compatibility
+      return buildReply(name, title, phone);
+    }
+
+    // Init from URL params
+    (function init() {
+      const { name, title, phone, relay } = getParams();
+      if (name && title && phone && relay) {
+        document.getElementById('form-card').style.display = 'none';
+        document.getElementById('sig-section').classList.add('visible');
+        document.getElementById('sig-full').innerHTML  = buildFull(name, title, phone, relay);
+        document.getElementById('sig-reply').innerHTML = buildReply(name, title, phone);
+        window.scrollTo(0, 0);
+      }
+    })();
+
+    function getParams() {
+      const p = new URLSearchParams(window.location.search);
+      const dec = k => decodeURIComponent((p.get(k)||'').replace(/\+/g,' '));
+      return { name: dec('name'), title: dec('title'), phone: dec('phone'), relay: dec('relay') };
+    }
+
+    function telDigits(raw) { return raw.replace(/\D/g,''); }
+
+    function generate() {
+      const name  = document.getElementById('f-name').value.trim();
+      const title = document.getElementById('f-title').value.trim();
+      const phone = document.getElementById('f-phone').value.trim();
+      const relay = document.getElementById('f-relay').value.trim();
+      if (!name || !title || !phone || !relay) { alert('Please fill in all four fields.'); return; }
+      const params = new URLSearchParams({ name, title, phone, relay });
+      window.location.href = window.location.pathname + '?' + params.toString();
+    }
+
+    // Init from URL params
+    (function init() {
+      const { name, title, phone, relay } = getParams();
+      if (name && title && phone && relay) {
+        document.getElementById('form-card').style.display = 'none';
+        document.getElementById('sig-section').classList.add('visible');
+        document.getElementById('sig-full').innerHTML  = buildFull(name, title, phone, relay);
+        document.getElementById('sig-reply').innerHTML = buildReply(name, title, phone);
+        window.scrollTo(0, 0);
+      }
+    })();
+
   </script>
 
 </body>
